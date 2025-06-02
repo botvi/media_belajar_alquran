@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="{{ asset('admin') }}/assets/css/semi-dark.css"/>
 	<link rel="stylesheet" href="{{ asset('admin') }}/assets/css/header-colors.css"/>
     @yield('style')
-	<title>Dashboard</title>
+	<title>Dashboard - Pojok Islam</title>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 					{{-- <img src="{{ asset('env') }}/logotangkas.png" class="logo-icon" alt="logo icon"> --}}
 				</div>
 				<div>
-					<h4 class="logo-text">Dashboard</h4>
+					<h4 class="logo-text">Pojok Islam</h4>
 				</div>
 				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
 				</div>
@@ -343,8 +343,8 @@
 							<img src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png" class="user-img" alt="user avatar">
 						
 							<div class="user-info ps-3">
-									<p class="user-name mb-0">Guest</p>
-									<p class="designation mb-0">Not Logged In</p>
+									<p class="user-name mb-0">{{ Auth::user()->nama }}</p>
+									<p class="designation mb-0">Admin</p>
 							</div>
 						</a>
 						
@@ -385,7 +385,7 @@
     <!--start switcher-->
 
     <!--end switcher-->
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
 
     @yield('script')
 
