@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\{
 };
 use App\Http\Controllers\{
     LoginController,
+    ProfilController,
 };
 use App\Http\Controllers\web\{
     IndexController,
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('master-sunnah', SunnahController::class);
     Route::get('/surah/fetch', [SurahController::class, 'fetchAndSaveSurah'])->name('admin.surah.fetch');
     Route::resource('master-surah', SurahController::class);
+    Route::resource('profil', ProfilController::class);
 });
 
 

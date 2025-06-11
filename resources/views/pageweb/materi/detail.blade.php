@@ -1,7 +1,7 @@
 @extends('template-web.layout')
 
 @section('content')
-    <section id="materi-detail" class="materi-detail section py-5">
+    <section id="materi-detail" class="materi-detail section py-5" style="background-image: url('{{ asset('web') }}/assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;"      >
         <div class="container">
             <div class="mb-4" data-aos="fade-up">
                 <a href="{{ url()->previous() }}" class="btn btn-outline-primary rounded-pill">

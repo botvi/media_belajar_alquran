@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Materi Section -->
-    <section id="materi" class="materi section">
+    <section id="materi" class="materi section" style="background-image: url('{{ asset('web') }}/assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Daftar Materi</h2>

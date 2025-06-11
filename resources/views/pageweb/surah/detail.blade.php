@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Surah Section -->
-    <section id="surah" class="surah section py-5">
+    <section id="surah" class="surah section py-5" style="background-image: url('{{ asset('web') }}/assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="container">
             <!-- Tombol Kembali -->
             <div class="mb-4" data-aos="fade-up">

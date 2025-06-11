@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Sunnah Section -->
-    <section id="sunnah" class="sunnah section">
+    <section id="sunnah" class="sunnah section" style="background-image: url('{{ asset('web') }}/assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Daftar Sunnah Rasulullah</h2>

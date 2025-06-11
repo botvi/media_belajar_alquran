@@ -24,7 +24,7 @@ class ProfilController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required|unique:users,username,' . $admin->id,
             'nama' => 'required', 
-            'no_wa' => 'required',
+            'email' => 'required|email|unique:users,email,' . $admin->id,
             'password' => 'nullable|min:8'
         ]);
 

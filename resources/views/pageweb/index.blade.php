@@ -3,9 +3,7 @@
 @section('content')
 
  <!-- Hero Section -->
- <section id="hero" class="hero section light-background">
-
-    <img src="{{ asset('admin') }}/assets/img/hero-bg.jpg" alt="">
+ <section id="hero" class="hero section light-background" style="background-image: url('{{ asset('web') }}/assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
 
     <div class="container" data-aos="zoom-out">
       <div class="row justify-content-center">

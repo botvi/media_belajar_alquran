@@ -7,6 +7,12 @@
         </a>
     </li>
     <li>
+        <a href="/profil">
+            <div class="parent-icon"><i class='bx bx-user'></i></div>
+            <div class="menu-title">PROFIL</div>
+        </a>
+    </li>
+    <li>
         <a href="/master-surah">
             <div class="parent-icon"><i class='bx bx-book-content'></i></div>
             <div class="menu-title">MATERI SURAH</div>
