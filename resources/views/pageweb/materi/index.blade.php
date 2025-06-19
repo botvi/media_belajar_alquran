@@ -16,7 +16,6 @@
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">{{ $m->judul }}</h5>
-                            <p class="card-text">{!! Str::limit($m->konten, 100) !!}</p>
                             <a href="{{ route('materi.detail', $m->judul) }}" class="btn btn-primary">Baca Selengkapnya</a>
                         </div>
                     </div>
