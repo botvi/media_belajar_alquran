@@ -12,5 +12,6 @@ class Materi extends Model
     protected $fillable = [
         'judul',
         'konten',
+        'suara',
     ];
 }

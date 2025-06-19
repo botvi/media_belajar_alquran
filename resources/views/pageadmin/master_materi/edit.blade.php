@@ -54,6 +54,15 @@
                                             <li>{{ $error }}</li>
                                         @endforeach
                                     </small>
+                                </div>  
+                                <div class="col-md-12">
+                                    <label for="suara" class="form-label">Suara</label>
+                                    <input type="file" class="form-control" id="suara" name="suara" placeholder="Suara Materi" required>
+                                    <small class="text-danger">
+                                        @foreach ($errors->get('suara') as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </small>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary px-5">Update</button>

@@ -28,6 +28,7 @@
                                     <th>No</th>
                                     <th>Judul</th>
                                     <th>Konten</th>
+                                    <th>Suara</th>
                                     <th>Aksi</th>
                                 
                                 </tr>
@@ -38,6 +39,16 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $data->judul }}</td>
                                     <td>{{ Str::limit(strip_tags($data->konten), 10) }}</td>
+                                    <td>
+                                        @if($data->suara)
+                                            <audio controls style="width: 200px; height: 40px;">
+                                                <source src="{{ asset('suara/' . $data->suara) }}" type="audio/mpeg">
+                                                Browser Anda tidak mendukung pemutaran audio.
+                                            </audio>
+                                        @else
+                                            <span class="text-muted">Tidak ada file suara</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{ route('master-materi.show', $data->id) }}" class="btn btn-sm btn-info">Detail</a>
                                         <a href="{{ route('master-materi.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
@@ -55,6 +66,7 @@
                                     <th>No</th>
                                     <th>Judul</th>
                                     <th>Konten</th>
+                                    <th>Suara</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>

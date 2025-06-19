@@ -43,11 +43,14 @@ class MateriController extends Controller
             $validator = Validator::make($request->all(), [
                 'judul' => 'required|string|max:255|unique:materis,judul',
                 'konten' => 'required|string|min:10',
+                'suara' => 'nullable|file|mimes:mp3,wav,ogg,m4a,aac,wma,flac,opus,webm,m3u8,mpd',
             ], [
                 'judul.required' => 'Judul materi harus diisi',
                 'judul.unique' => 'Judul materi sudah ada',
                 'konten.required' => 'Konten materi harus diisi',
-                'konten.min' => 'Konten materi minimal 10 karakter'
+                'konten.min' => 'Konten materi minimal 10 karakter',
+                'suara.file' => 'Suara materi harus berupa file',
+                'suara.mimes' => 'Suara materi harus berupa file audio'
             ]);
 
             if ($validator->fails()) {
@@ -56,10 +59,27 @@ class MateriController extends Controller
                     ->withInput();
             }
 
-            $materi = Materi::create([
+            $data = [
                 'judul' => $request->judul,
                 'konten' => $request->konten,
-            ]);
+            ];
+
+            // Handle file upload jika ada
+            if ($request->hasFile('suara') && $request->file('suara')->isValid()) {
+                $suara = $request->file('suara');
+                $suaraName = time() . '_' . uniqid() . '.' . $suara->getClientOriginalExtension();
+                
+                // Pastikan direktori suara ada
+                $uploadPath = public_path('suara');
+                if (!File::exists($uploadPath)) {
+                    File::makeDirectory($uploadPath, 0755, true);
+                }
+                
+                $suara->move($uploadPath, $suaraName);
+                $data['suara'] = $suaraName;
+            }
+
+            $materi = Materi::create($data);
 
             Alert::success('Berhasil', 'Data materi berhasil disimpan');
             return redirect()->route('master-materi.index');
@@ -92,11 +112,14 @@ class MateriController extends Controller
             $validator = Validator::make($request->all(), [
                 'judul' => 'required|string|max:255|unique:materis,judul,' . $id,
                 'konten' => 'required|string|min:10',
+                'suara' => 'nullable|file|mimes:mp3,wav,ogg,m4a,aac,wma,flac,opus,webm,m3u8,mpd',
             ], [
                 'judul.required' => 'Judul materi harus diisi',
                 'judul.unique' => 'Judul materi sudah ada',
                 'konten.required' => 'Konten materi harus diisi',
-                'konten.min' => 'Konten materi minimal 10 karakter'
+                'konten.min' => 'Konten materi minimal 10 karakter',
+                'suara.file' => 'Suara materi harus berupa file',
+                'suara.mimes' => 'Suara materi harus berupa file audio'
             ]);
 
             if ($validator->fails()) {
@@ -106,10 +129,32 @@ class MateriController extends Controller
             }
 
             $materi = Materi::findOrFail($id);
-            $materi->update([
+            $data = [
                 'judul' => $request->judul,
                 'konten' => $request->konten,
-            ]);
+            ];
+
+            // Handle file upload jika ada
+            if ($request->hasFile('suara') && $request->file('suara')->isValid()) {
+                // Hapus file lama jika ada
+                if ($materi->suara && File::exists(public_path('suara/' . $materi->suara))) {
+                    File::delete(public_path('suara/' . $materi->suara));
+                }
+
+                $suara = $request->file('suara');
+                $suaraName = time() . '_' . uniqid() . '.' . $suara->getClientOriginalExtension();
+                
+                // Pastikan direktori suara ada
+                $uploadPath = public_path('suara');
+                if (!File::exists($uploadPath)) {
+                    File::makeDirectory($uploadPath, 0755, true);
+                }
+                
+                $suara->move($uploadPath, $suaraName);
+                $data['suara'] = $suaraName;
+            }
+
+            $materi->update($data);
 
             Alert::success('Berhasil', 'Data materi berhasil diperbarui');
             return redirect()->route('master-materi.index');
@@ -126,6 +171,12 @@ class MateriController extends Controller
     {
         try {
             $materi = Materi::findOrFail($id);
+            
+            // Hapus file suara jika ada
+            if ($materi->suara && File::exists(public_path('suara/' . $materi->suara))) {
+                File::delete(public_path('suara/' . $materi->suara));
+            }
+            
             $materi->delete();
 
             Alert::success('Berhasil', 'Data materi berhasil dihapus');
@@ -136,9 +187,17 @@ class MateriController extends Controller
         }
     }
 
+    /**
+     * Menampilkan detail materi
+     */
     public function show($id)
     {
-        $materi = Materi::findOrFail($id);
-        return view('pageadmin.master_materi.show', compact('materi'));
+        try {
+            $materi = Materi::findOrFail($id);
+            return view('pageadmin.master_materi.show', compact('materi'));
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Data materi tidak ditemukan');
+            return redirect()->route('master-materi.index');
+        }
     }
 }

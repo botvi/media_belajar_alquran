@@ -26,6 +26,10 @@
                             <h5 class="mb-0 text-primary">{{ $materi->judul }}</h5>
                             <hr>
                             <div class="mt-3">
+                                <audio controls style="width: 200px; height: 40px;">
+                                    <source src="{{ asset('suara/' . $materi->suara) }}" type="audio/mpeg">
+                                    Browser Anda tidak mendukung pemutaran audio.
+                                </audio>
                                 {!! $materi->konten !!}
                             </div>
                         </div>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->longText('konten');
+            $table->string('suara')->nullable();
             $table->timestamps();
         });
     }
