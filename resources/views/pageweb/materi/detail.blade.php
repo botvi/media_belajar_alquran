@@ -13,7 +13,10 @@
                 <div class="col-lg-8 mx-auto">
                     <article class="materi-content" data-aos="fade-up">
                         <h1 class="mb-4 fw-bold text-primary">{{ $data->judul }}</h1>
-                        
+                        <audio controls style="width: 200px; height: 40px;">
+                            <source src="{{ asset('suara/' . $data->suara) }}" type="audio/mpeg">
+                            Browser Anda tidak mendukung pemutaran audio.
+                        </audio>
                         <div class="materi-konten">
                             {!! $data->konten !!}
                         </div>
