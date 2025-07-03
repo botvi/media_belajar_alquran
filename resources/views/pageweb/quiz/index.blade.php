@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Quiz Section -->
-        <section id="quiz" class="quiz section" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; padding: 40px 0;">
+        <section id="quiz" class="quiz section"  style="background-image: url('{{ asset('web') }}/assets/img/bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2 style="color: #2c3e50; font-family: 'Comic Sans MS', cursive; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🎮 Quiz Seru! 🎮</h2>
