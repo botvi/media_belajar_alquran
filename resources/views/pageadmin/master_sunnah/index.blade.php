@@ -32,6 +32,8 @@
                                     <th>Kategori</th>
                                     <th>Sumber</th>
                                     <th>Gambar</th>
+                                    <th>Doa</th>
+                                    <th>Audio Doa</th>
                                     <th>Aksi</th>
                                 
                                 </tr>
@@ -46,6 +48,13 @@
                                     <td>{{ $data->kategori }}</td>
                                     <td>{{ $data->sumber }}</td>
                                     <td> <img src="{{ asset('uploads/gambar/' . $data->gambar) }}" alt="Gambar" style="width: 100px; height: 100px;"></td>
+                                    <td>{{ $data->doa }}</td>
+                                    <td>
+                                        <audio controls style="width: 200px; height: 40px;">
+                                            <source src="{{ asset('uploads/audio_doa/' . $data->audio_doa) }}" type="audio/mpeg">
+                                            Browser Anda tidak mendukung pemutaran audio.
+                                        </audio>
+                                    </td>
                                     <td>
                                         <a href="{{ route('master-sunnah.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                         <form action="{{ route('master-sunnah.destroy', $data->id) }}" method="POST" style="display:inline;" class="delete-form">
@@ -66,6 +75,8 @@
                                     <th>Kategori</th>
                                     <th>Sumber</th>
                                     <th>Gambar</th>
+                                    <th>Doa</th>
+                                    <th>Audio Doa</th>
                                     <th>Aksi</th>
                                 </tr>
                             </tfoot>

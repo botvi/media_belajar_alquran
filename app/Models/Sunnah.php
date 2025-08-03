@@ -16,5 +16,7 @@ class Sunnah extends Model
         'kategori',
         'sumber',
         'gambar',
+        'doa',
+        'audio_doa',
     ];
 }

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('sumber');
             $table->string('gambar')->nullable();
+            $table->longText('doa')->nullable();
+            $table->string('audio_doa')->nullable();
             $table->timestamps();
         });
     }

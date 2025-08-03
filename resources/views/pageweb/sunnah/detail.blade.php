@@ -40,6 +40,24 @@
                         <div class="sunnah-description">
                             {!! $data->deskripsi !!}
                         </div>
+                        <div class="sunnah-description mt-4">
+                            <h3>Doa</h3>
+                            {!! $data->doa !!}
+                        </div>
+                        @if(!empty($data->audio_doa) && file_exists(public_path('uploads/audio_doa/' . $data->audio_doa)))
+                        <div class="sunnah-description">
+                            <audio controls style="width: 200px; height: 40px;">
+                                <source src="{{ asset('uploads/audio_doa/' . $data->audio_doa) }}" type="audio/mpeg">
+                                Browser Anda tidak mendukung pemutaran audio.
+                            </audio>
+                        </div>
+                        @else
+                        <div class="sunnah-description">
+                            <div class="alert alert-warning mt-2">
+                                Audio doa tidak tersedia atau file audio tidak ditemukan.
+                            </div>
+                        </div>
+                        @endif
                     </article>
                 </div>
             </div>

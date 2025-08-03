@@ -74,7 +74,14 @@
                                         @endforeach
                                     </small>
                                 </div>
-                                
+                                <div class="col-md-12">
+                                    <label for="doa" class="form-label">Doa</label>
+                                    <textarea class="form-control" id="doa" name="doa" placeholder="Doa" required></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="audio_doa" class="form-label">Audio Doa</label>
+                                    <input type="file" class="form-control" id="audio_doa" name="audio_doa" placeholder="Audio Doa" required>
+                                </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary px-5">Simpan</button>
                                 </div>

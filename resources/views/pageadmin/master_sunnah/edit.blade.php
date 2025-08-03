@@ -82,7 +82,14 @@
                                         <img src="{{ asset('uploads/gambar/' . $sunnah->gambar) }}" alt="Gambar Saat Ini" class="img-thumbnail" style="max-width: 200px;">
                                     </div>
                                 </div>
-                                
+                                <div class="col-md-12">
+                                    <label for="doa" class="form-label">Doa</label>
+                                    <textarea class="form-control" id="doa" name="doa" placeholder="Doa" required>{{ $sunnah->doa }}</textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="audio_doa" class="form-label">Audio Doa</label>
+                                    <input type="file" class="form-control" id="audio_doa" name="audio_doa" placeholder="Audio Doa">
+                                </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary px-5">Update</button>
                                 </div>
